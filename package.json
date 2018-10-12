@@ -1,0 +1,25 @@
+{
+  "name": "graphql_with_nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rghvndr99/graphql_with_nodejs.git"
+  },
+  "author": "\u001b[A\u001b[Cgraphql\u001b[B\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Draghav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rghvndr99/graphql_with_nodejs/issues"
+  },
+  "homepage": "https://github.com/rghvndr99/graphql_with_nodejs#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.6.12",
+    "graphql": "^14.0.2"
+  }
+}
