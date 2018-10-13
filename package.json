@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "node server.js"
+    "start-api": "node server.js",
+    "start": "webpack-dev-server --mode development --open"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,21 @@
   },
   "homepage": "https://github.com/rghvndr99/graphql_with_nodejs#readme",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "clean-webpack-plugin": "^0.1.19",
+    "cors": "^2.8.4",
     "express": "^4.16.4",
     "express-graphql": "^0.6.12",
-    "graphql": "^14.0.2"
+    "graphql": "^14.0.2",
+    "graphql-request": "^1.8.2",
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
   }
 }
