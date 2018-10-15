@@ -28,7 +28,7 @@ var schema=buildSchema(`
 	 type Query{
 	 	alluser:[user]
 	 	specificuserById(_id:String!):user
-	 	updateuser(_id:String!,name:String!):user
+	 	updateuser(_id:String!,name:String!):[user]
 	 },
 	 type user{
 	 	_id:String,
@@ -46,18 +46,27 @@ var rootResolver={
 	updateuser:(obj)=>getupdatedUser(obj),
 }
 
-const getAllUsers =()=>{console.log("request is captured");return data};
+const getAllUsers =()=>{return data};
 const getspecificuser=(_id)=>{
+	_id=_id.trim();
 	return data.filter((item)=>{
        return item._id===_id
 	})[0];
 }
 const getupdatedUser=(obj)=>{
-
-	let currentObj=getspecificuser(obj._id);
-	console.log(JSON.stringify(obj)+' ' +JSON.stringify(currentObj));
-	currentObj.name=obj.name;
-	return currentObj;
+	let id=obj._id.trim();
+	 let newArr=data.map((item)=>{
+	 	let isTrue=item._id==id.trim()?true:false;
+	 	if(item._id==id){
+           for(let key in obj) {
+           	  key=key.trim();
+           	  item[key]=obj[key].trim();
+             }
+         }
+        return item;
+	});
+	data =newArr;
+	return data;
 }
 
 app.use('/graphql',expressGraphQl({
