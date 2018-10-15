@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import InputField from "./inputField.js";
+import {Button} from '@material-ui/core';
 class UpdateUser extends Component {
     constructor(props){
         super(props);
@@ -8,7 +9,7 @@ class UpdateUser extends Component {
         const prp=this.props.userObj;
         this.state=prp
       }
-   submitFormAction(e){
+   submitFormAction(){
     const obj=this.state;
      this.props.submitaction(obj);
    }
@@ -32,14 +33,11 @@ class UpdateUser extends Component {
                        );
     }
     return(
-          <React.Fragment>
-           <form>
+          <div className="container">
            {inputfield}
-           <input type="button" onClick={this.submitFormAction} value="update" />
-           </form>
-         </React.Fragment>
-
-    )
+            <Button variant="outlined" size="large" color="secondary"  onClick={()=>this.submitFormAction()}>Update</Button>
+           </div>
+        )
   }
 }
 export default UpdateUser;

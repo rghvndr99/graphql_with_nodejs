@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import {GetActivity,UpdateActivity} from "./services.js";
 import ListUser from "./ListUser.js";
 import UpdateUser from "./UpdateUser.js";
+import './app.css';
+import {AppBar,Toolbar,Typography,Button} from '@material-ui/core';
 
 class Main extends Component {
     constructor(props){
@@ -26,9 +28,8 @@ class Main extends Component {
         userObj:{}
       })
   };
-  undateUser(e){
-    const {param}=e.target.dataset;
-    this.setState({userObj:JSON.parse(param)});
+  undateUser(userObj){
+        this.setState({userObj});
   };
 
   render() {
@@ -38,7 +39,16 @@ class Main extends Component {
     const listOfUser=userdatamap.map((item)=><ListUser updateUserHandler={this.undateUser} key={item._id} item={item}/>)
          return(
           <div>
-            <ul>{listOfUser}</ul>
+               <div className="header">
+                <AppBar position="static" color="secondary">
+                  <Toolbar>
+                    <Typography variant="h6" color="inherit">
+                       Employee List
+                    </Typography>
+                  </Toolbar>
+                </AppBar>
+              </div>
+            <div>{listOfUser}</div>
             { isUpdated &&
                <UpdateUser userObj={userObj} submitaction={this.submitHandler}/>
 

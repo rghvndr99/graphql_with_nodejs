@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-//import UpdateUser from "./UpdateUser.js";
+
+import {Input} from '@material-ui/core';
 class InputField extends Component {
     constructor(props){
         super(props);
@@ -7,9 +8,15 @@ class InputField extends Component {
   render() {
     const {userObj,index,disabled,changeHandler}=this.props;
     return(
-          <div>
-            <input type="text" id={index} disabled={disabled} onChange={changeHandler} defaultValue={userObj[index]} />
-         </div>
+          <React.Fragment>
+            <Input
+                defaultValue={userObj[index]}
+                className="input-margin"
+                id={index}
+                disabled={disabled}
+                onChange={(e)=>changeHandler(e)}
+             />
+        </React.Fragment>
 
     )
   }

@@ -1,0 +1,28 @@
+.header {
+    color:red;
+}
+.card {
+	min-width:275px;
+	display: inline-block;
+	margin:10px;
+}
+.card-title {
+   font-size: 14px;
+}
+.card-position {
+	margin-bottom:12px;
+}
+.avatar {
+	margin:30px auto;
+}
+.text-center{
+	text-align:center;
+	justify-content: center;
+}
+.input-margin{
+	margin:10px;
+}
+.container{
+	display: flex;
+	flexWrap:wrap;
+}
