@@ -46,18 +46,33 @@ var rootResolver={
 	updateuser:(obj)=>getupdatedUser(obj),
 }
 
-const getAllUsers =()=>{return data};
+const getAllUsers =()=>{
+     //write custom database logic
+     return data
+     };
+
 const getspecificuser=(_id)=>{
+	//write custom database logic
 	_id=_id.trim();
 	return data.filter((item)=>{
        return item._id===_id
 	})[0];
 }
+
+const cleanJson=(obj)=>{
+    let updatedObj={};
+    for(let key in obj){
+       key=key.trim();
+       updatedObj[key]=obj[key].trim();
+    }
+    return updatedObj;
+  };
+
 const getupdatedUser=(obj)=>{
-	let id=obj._id.trim();
+	//write custom database logic
+	obj=cleanJson(obj);
 	 let newArr=data.map((item)=>{
-	 	let isTrue=item._id==id.trim()?true:false;
-	 	if(item._id==id){
+	 	if(item._id==obj._id){
            for(let key in obj) {
            	  key=key.trim();
            	  item[key]=obj[key].trim();
