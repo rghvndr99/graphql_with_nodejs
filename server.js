@@ -29,6 +29,7 @@ var schema=buildSchema(`
 	 	alluser:[user]
 	 	specificuserById(_id:String!):user
 	 	updateuser(_id:String!,name:String,email:String,address:String,company:String):[user]
+	 	deleteuser(_id:String!):[user]
 	 },
 	 type user{
 	 	_id:String,
@@ -44,6 +45,7 @@ var rootResolver={
 	alluser:()=>getAllUsers(),
 	specificuserById:(idObj)=>getspecificuser(idObj._id),
 	updateuser:(obj)=>getupdatedUser(obj),
+	deleteuser:(obj)=>getDeleteUser(obj),
 }
 
 const getAllUsers =()=>{
@@ -83,7 +85,20 @@ const getupdatedUser=(obj)=>{
 	data =newArr;
 	return data;
 }
+const getDeleteUser=(obj)=>{
+	//write custom database logic
 
+	obj=cleanJson(obj);
+	let activeIndex=null;
+	data.map((item,index)=>{
+	 	if(item._id==obj._id){
+           activeIndex=index;
+         }
+	});
+	data.splice(activeIndex,1);
+	console.log('RDX'+ JSON.stringify(data));
+	return data;
+}
 app.use('/graphql',expressGraphQl({
        rootValue:rootResolver,
        schema:schema,

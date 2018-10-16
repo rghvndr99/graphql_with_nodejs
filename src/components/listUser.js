@@ -7,7 +7,7 @@ class ListUser extends Component {
         super(props);
       }
    render() {
-    const {item,updateUserHandler}=this.props;
+    const {item,updateUserHandler,deleteUserHandler}=this.props;
       return(
          <Card className="card">
              <CardActionArea>
@@ -33,6 +33,7 @@ class ListUser extends Component {
               </CardActionArea>
               <CardActions className="text-center">
                 <Button size="small" color="secondary" onClick={()=>updateUserHandler(item)}>Edit</Button>
+                <Button size="small" color="secondary" onClick={()=>deleteUserHandler(item)}>Delete</Button>
               </CardActions>
           </Card>
       )

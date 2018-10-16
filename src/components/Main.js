@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {GetActivity,UpdateActivity} from "./services.js";
+import {GetActivity,UpdateActivity,deleteUser} from "./services.js";
 import ListUser from "./ListUser.js";
 import UpdateUser from "./UpdateUser.js";
 import './app.css';
@@ -14,6 +14,7 @@ class Main extends Component {
       this.undateUser=this.undateUser.bind(this);
       this.submitHandler=this.submitHandler.bind(this);
       this.closeModelBox=this.closeModelBox.bind(this);
+      this.deleteUserHandler=this.deleteUserHandler.bind(this);
       }
  async componentDidMount(){
   let userList= await GetActivity();
@@ -28,6 +29,13 @@ class Main extends Component {
         userObj:{}
       })
   };
+  async deleteUserHandler(obj){
+    console.log('RDX'+ JSON.stringify(obj));
+    let userList=await deleteUser(obj);
+    this.setState({
+     userList
+   });
+  }
   undateUser(userObj){
         this.setState({userObj});
   };
@@ -41,7 +49,7 @@ class Main extends Component {
     const {userObj,userList}=this.state;
     const isUpdated=Object.keys(userObj).length>0?true:false;
     const userdatamap=userList?userList:[];
-    const listOfUser=userdatamap.map((item)=><ListUser updateUserHandler={this.undateUser} key={item._id} item={item}/>)
+    const listOfUser=userdatamap.map((item)=><ListUser deleteUserHandler={this.deleteUserHandler} updateUserHandler={this.undateUser} key={item._id} item={item}/>)
          return(
           <div>
                <div className="header">

@@ -40,8 +40,8 @@ class UpdateUser extends Component {
            >
           <DialogTitle id="form-dialog-title">Update</DialogTitle>
           <DialogContent>
-                       <form className="container">
-           {inputfield}
+           <form className="container">
+                       {inputfield}
 
            </form>
 

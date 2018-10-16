@@ -20,7 +20,7 @@
 	justify-content: center;
 }
 .input-margin{
-	margin:10px;
+	width: 100%;
 }
 .container{
 	display: flex;
