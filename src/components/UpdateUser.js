@@ -11,7 +11,8 @@ class UpdateUser extends Component {
       }
    submitFormAction(){
     const obj=this.state;
-     this.props.submitaction(obj);
+    const {isadduser,addaction,updateaction}=this.props;
+      isadduser?this.props.addaction(obj):this.props.updateaction(obj);
    }
    onChangehandler(e){
       const element=e.target;
@@ -20,7 +21,8 @@ class UpdateUser extends Component {
       })
    }
   render() {
-    const {userObj,submitaction,closeModal,isOpen}=this.props;
+    const {userObj,closeModal,isOpen,isadduser}=this.props;
+    const addupdatetxt=isadduser?"Add":"update";
     const inputfield=[];
     for(let props in userObj){
       let disabled=props=="_id"?true:false;
@@ -38,7 +40,7 @@ class UpdateUser extends Component {
               open={isOpen}
               aria-labelledby="form-dialog-title"
            >
-          <DialogTitle id="form-dialog-title">Update</DialogTitle>
+          <DialogTitle id="form-dialog-title">{addupdatetxt}</DialogTitle>
           <DialogContent>
            <form className="container">
                        {inputfield}
@@ -48,7 +50,7 @@ class UpdateUser extends Component {
 
           </DialogContent>
           <DialogActions>
-            <Button  size="large" color="primary"  onClick={()=>this.submitFormAction()}>Update</Button>
+            <Button  size="large" color="primary"  onClick={()=>this.submitFormAction()}>{addupdatetxt}</Button>
             <Button onClick={closeModal} color="primary">
               Cancel
             </Button>

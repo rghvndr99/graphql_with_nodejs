@@ -1,20 +1,31 @@
 import React, { Component } from "react";
-import {GetActivity,UpdateActivity,deleteUser} from "./services.js";
+import {GetActivity,UpdateActivity,deleteUser,addUser} from "./services.js";
 import ListUser from "./ListUser.js";
 import UpdateUser from "./UpdateUser.js";
 import './app.css';
 import {AppBar,Toolbar,Typography,Button,Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle} from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 class Main extends Component {
     constructor(props){
         super(props);
       this.state={
         userList:[],
-        userObj:{}
+        userObj:{},
+        isadduser:false
       }
       this.undateUser=this.undateUser.bind(this);
       this.submitHandler=this.submitHandler.bind(this);
       this.closeModelBox=this.closeModelBox.bind(this);
       this.deleteUserHandler=this.deleteUserHandler.bind(this);
+      this.addUserHandler=this.addUserHandler.bind(this);
+      this.adduserBtnClick=this.adduserBtnClick.bind(this);
+      this.adduserProps={
+            name:'',
+             email:'',
+             address:'',
+             company:''
+         }
+
       }
  async componentDidMount(){
   let userList= await GetActivity();
@@ -26,29 +37,56 @@ class Main extends Component {
       let userList=await UpdateActivity(obj);
       this.setState({
         userList,
-        userObj:{}
+        userObj:{},
+        isadduser:false
       })
   };
   async deleteUserHandler(obj){
-    console.log('RDX'+ JSON.stringify(obj));
     let userList=await deleteUser(obj);
     this.setState({
      userList
    });
+  }
+  async addUserHandler(obj){
+    let userList=await addUser(obj);
+    this.setState({
+     userList,
+     userObj:{},
+     isadduser:false
+   });
+  }
+  adduserBtnClick (){
+    this.setState({
+       isadduser:true,
+       userObj:this.adduserProps
+     });
+    console.log('RDX' +this.state.isadduser);
   }
   undateUser(userObj){
         this.setState({userObj});
   };
   closeModelBox(){
     this.setState({
-        userObj:{}
+        userObj:{},
+        isadduser:false
       })
-  }
+  };
 
   render() {
-    const {userObj,userList}=this.state;
+    const {userObj,userList,isadduser}=this.state;
     const isUpdated=Object.keys(userObj).length>0?true:false;
-    const userdatamap=userList?userList:[];
+    let modalDialog=null;
+    if(isUpdated || isadduser){
+      modalDialog= <UpdateUser
+                     isadduser={isadduser}
+                     userObj={userObj}
+                     isOpen={isUpdated}
+                     closeModal={this.closeModelBox}
+                     updateaction={this.submitHandler}
+                     addaction={this.addUserHandler}
+                     />
+    }
+        const userdatamap=userList?userList:[];
     const listOfUser=userdatamap.map((item)=><ListUser deleteUserHandler={this.deleteUserHandler} updateUserHandler={this.undateUser} key={item._id} item={item}/>)
          return(
           <div>
@@ -62,10 +100,10 @@ class Main extends Component {
                 </AppBar>
               </div>
             <div>{listOfUser}</div>
-            { isUpdated &&
-               <UpdateUser userObj={userObj} isOpen={isUpdated} closeModal={this.closeModelBox} submitaction={this.submitHandler}/>
-
-            }
+            {modalDialog}
+            <Button variant="fab" color="secondary" aria-label="Add" className="add-user-btn" onClick={this.adduserBtnClick}>
+                <AddIcon />
+           </Button>
          </div>
     )
   }

@@ -44,6 +44,21 @@ export const deleteUser=async(obj)=> {
       }
     }`;
    const response=await client.request(query);
-   return response.deleteuser;
+   return response.deleteuser;adduser
 }
+
+export const addUser=async(obj)=> {
+    const query=`{
+      adduser(name:"${ obj.name}",email:"${ obj.email}",company:"${ obj.company}",address:"${ obj.address}") {
+        _id,
+        name,
+        email,
+        address,
+        company
+      }
+    }`;
+   const response=await client.request(query);
+   return response.adduser;
+}
+
 //export default getActivity;

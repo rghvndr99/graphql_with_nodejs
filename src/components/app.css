@@ -26,3 +26,8 @@
 	display: flex;
 	flex-wrap:wrap;
 }
+.add-user-btn{
+   position: fixed !important;
+   right:5px;
+   bottom:10px;
+}

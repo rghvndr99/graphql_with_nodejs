@@ -30,6 +30,7 @@ var schema=buildSchema(`
 	 	specificuserById(_id:String!):user
 	 	updateuser(_id:String!,name:String,email:String,address:String,company:String):[user]
 	 	deleteuser(_id:String!):[user]
+	 	adduser(name:String!,email:String,address:String,company:String):[user]
 	 },
 	 type user{
 	 	_id:String,
@@ -46,8 +47,19 @@ var rootResolver={
 	specificuserById:(idObj)=>getspecificuser(idObj._id),
 	updateuser:(obj)=>getupdatedUser(obj),
 	deleteuser:(obj)=>getDeleteUser(obj),
+	adduser:(obj)=>addNewUser(obj),
 }
 
+const addNewUser=(obj)=>{
+      obj=cleanJson(obj);
+      obj._id=getRandomId();
+      data.push(obj);
+      return data;
+}
+const getRandomId=()=>{
+	 let length=24;
+      return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
+}
 const getAllUsers =()=>{
      //write custom database logic
      return data
