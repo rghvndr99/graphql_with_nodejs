@@ -1,23 +1,27 @@
-import { GraphQLClient ,request } from 'graphql-request';
 import 'babel-polyfill';
 const ENDPOINT = 'http://localhost:4000/graphql';
-const client=new GraphQLClient(ENDPOINT);
-
-export const getUser=async()=> {
-
-    const query=`{
-    	alluser {
-    		_id,
-    		name,
+export const getUser=async()=>{
+const query=`{
+      alluser {
+        _id,
+        name,
         company,
         email,
         address
-    	}
+      }
     }`;
-   const response=await client.request(query);
 
-   return response.alluser;
-}
+   let response=[];
+   await fetch(ENDPOINT,{
+      method:'post',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify({"query":query})
+   }).then((res)=>res.json())
+      .then((res)=>{
+           response=res.data.alluser
+      });
+  return response;
+};
 export const updateUser=async(obj)=> {
     const query=`{
     	updateuser(_id:"${ obj._id} ",name:"${ obj.name}",email:"${ obj.email}",company:"${ obj.company}",address:"${ obj.address}") {
@@ -28,9 +32,15 @@ export const updateUser=async(obj)=> {
         company
     	}
     }`;
-   const response=await client.request(query);
-
-   return response.updateuser;
+   //const response=await client.request(query);
+   let response=[];
+    await fetch(ENDPOINT,{
+      method:'post',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify({"query":query})
+   }).then((res)=>res.json())
+      .then((res)=>{return response=res.data.updateuser});
+    return response;
 }
 
 export const deleteUser=async(obj)=> {
@@ -43,8 +53,14 @@ export const deleteUser=async(obj)=> {
         company
       }
     }`;
-   const response=await client.request(query);
-   return response.deleteuser;adduser
+   let response=[];
+   await fetch(ENDPOINT,{
+      method:'post',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify({"query":query})
+   }).then((res)=>res.json())
+      .then((res)=>{console.log(res.data);return response=res.data.deleteuser});
+    return response;
 }
 
 export const addUser=async(obj)=> {
@@ -57,8 +73,14 @@ export const addUser=async(obj)=> {
         company
       }
     }`;
-   const response=await client.request(query);
-   return response.adduser;
+   let response=[];
+   await fetch(ENDPOINT,{
+      method:'post',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify({"query":query})
+   }).then((res)=>res.json())
+      .then((res)=>{return response=res.data.adduser});
+    return response;
 }
 
 //export default getActivity;

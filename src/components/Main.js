@@ -6,6 +6,7 @@ import Header from "./Header.js";
 import './app.css';
 import {Button} from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
+
 class Main extends Component {
     constructor(props){
         super(props);
@@ -29,11 +30,11 @@ class Main extends Component {
 
       }
   // loading user list
- async componentDidMount(){
-  let userList= await getUser();
-   this.setState({
-     userList
-   })
+async componentDidMount(){
+   let userList=await getUser();
+    this.setState({
+              userList
+      });
   };
   // updating user
   async submitHandler(obj){

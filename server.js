@@ -62,7 +62,7 @@ const getRandomId=()=>{
 }
 const getAllUsers =()=>{
      //write custom database logic
-     return data
+        return data
      };
 
 const getspecificuser=(_id)=>{
@@ -84,7 +84,7 @@ const cleanJson=(obj)=>{
 
 const getupdatedUser=(obj)=>{
 	//write custom database logic
-	obj=cleanJson(obj);
+     obj=cleanJson(obj);
 	 let newArr=data.map((item)=>{
 	 	if(item._id==obj._id){
            for(let key in obj) {
