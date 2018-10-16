@@ -44,7 +44,6 @@ export const deleteUser=async(obj)=> {
       }
     }`;
    const response=await client.request(query);
-   console.log('RDX'+ JSON.stringify(response));
    return response.deleteuser;
 }
 //export default getActivity;

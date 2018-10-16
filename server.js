@@ -76,8 +76,7 @@ const getupdatedUser=(obj)=>{
 	 let newArr=data.map((item)=>{
 	 	if(item._id==obj._id){
            for(let key in obj) {
-           	  key=key.trim();
-           	  item[key]=obj[key].trim();
+           	  item[key]=obj[key];
              }
          }
         return item;
@@ -96,8 +95,7 @@ const getDeleteUser=(obj)=>{
          }
 	});
 	data.splice(activeIndex,1);
-	console.log('RDX'+ JSON.stringify(data));
-	return data;
+		return data;
 }
 app.use('/graphql',expressGraphQl({
        rootValue:rootResolver,
