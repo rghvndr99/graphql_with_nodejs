@@ -17,13 +17,22 @@ class ListUser extends Component {
                   </Avatar>
                </CardMedia>
                <CardContent>
-                <Typography variant="h5" component="h2" className="text-center">
+                <Typography variant="h5" component="h2">
                   {item.name}
                 </Typography>
+                <Typography className="card-position" color="textSecondary">
+                    Organization-{item.company}
+                 </Typography>
+                 <Typography className="card-position" color="textSecondary">
+                    address-{item.address}
+                 </Typography>
+                 <Typography className="card-position" component="p">
+                    Email-{item.email}
+                 </Typography>
                 </CardContent>
               </CardActionArea>
               <CardActions className="text-center">
-                <Button variant="outlined" size="small" color="secondary" data-param={JSON.stringify(item)} onClick={()=>updateUserHandler(item)}>Edit</Button>
+                <Button size="small" color="secondary" onClick={()=>updateUserHandler(item)}>Edit</Button>
               </CardActions>
           </Card>
       )

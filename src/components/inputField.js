@@ -12,6 +12,7 @@ class InputField extends Component {
             <Input
                 defaultValue={userObj[index]}
                 className="input-margin"
+                label={index}
                 id={index}
                 disabled={disabled}
                 onChange={(e)=>changeHandler(e)}

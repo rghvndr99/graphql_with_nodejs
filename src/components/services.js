@@ -8,7 +8,10 @@ export const GetActivity=async()=> {
     const query=`{
     	alluser {
     		_id,
-    		name
+    		name,
+        company,
+        email,
+        address
     	}
     }`;
    const response=await client.request(query);
@@ -18,9 +21,12 @@ export const GetActivity=async()=> {
 export const UpdateActivity=async(obj)=> {
     console.log('RDX'+ JSON.stringify(obj));
     const query=`{
-    	updateuser(_id:"${ obj._id.trim()} ",name:"${ obj.name.trim()}") {
+    	updateuser(_id:"${ obj._id} ",name:"${ obj.name}",email:"${ obj.email}",company:"${ obj.company}",address:"${ obj.address}") {
     		_id,
-    		name
+    		name,
+        email,
+        address,
+        company
     	}
     }`;
    const response=await client.request(query);

@@ -28,7 +28,7 @@ var schema=buildSchema(`
 	 type Query{
 	 	alluser:[user]
 	 	specificuserById(_id:String!):user
-	 	updateuser(_id:String!,name:String!):[user]
+	 	updateuser(_id:String!,name:String,email:String,address:String,company:String):[user]
 	 },
 	 type user{
 	 	_id:String,

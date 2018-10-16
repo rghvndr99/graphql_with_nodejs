@@ -3,8 +3,7 @@ import {GetActivity,UpdateActivity} from "./services.js";
 import ListUser from "./ListUser.js";
 import UpdateUser from "./UpdateUser.js";
 import './app.css';
-import {AppBar,Toolbar,Typography,Button} from '@material-ui/core';
-
+import {AppBar,Toolbar,Typography,Button,Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle} from '@material-ui/core';
 class Main extends Component {
     constructor(props){
         super(props);
@@ -14,6 +13,7 @@ class Main extends Component {
       }
       this.undateUser=this.undateUser.bind(this);
       this.submitHandler=this.submitHandler.bind(this);
+      this.closeModelBox=this.closeModelBox.bind(this);
       }
  async componentDidMount(){
   let userList= await GetActivity();
@@ -31,6 +31,11 @@ class Main extends Component {
   undateUser(userObj){
         this.setState({userObj});
   };
+  closeModelBox(){
+    this.setState({
+        userObj:{}
+      })
+  }
 
   render() {
     const {userObj,userList}=this.state;
@@ -50,7 +55,7 @@ class Main extends Component {
               </div>
             <div>{listOfUser}</div>
             { isUpdated &&
-               <UpdateUser userObj={userObj} submitaction={this.submitHandler}/>
+               <UpdateUser userObj={userObj} isOpen={isUpdated} closeModal={this.closeModelBox} submitaction={this.submitHandler}/>
 
             }
          </div>

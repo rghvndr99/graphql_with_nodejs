@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import InputField from "./inputField.js";
-import {Button} from '@material-ui/core';
+import {Button,Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle} from '@material-ui/core';
 class UpdateUser extends Component {
     constructor(props){
         super(props);
@@ -20,7 +20,7 @@ class UpdateUser extends Component {
       })
    }
   render() {
-    const {userObj,submitaction}=this.props;
+    const {userObj,submitaction,closeModal,isOpen}=this.props;
     const inputfield=[];
     for(let props in userObj){
       let disabled=props=="_id"?true:false;
@@ -33,10 +33,27 @@ class UpdateUser extends Component {
                        );
     }
     return(
-          <div className="container">
+          <Dialog
+              onClose={closeModal}
+              open={isOpen}
+              aria-labelledby="form-dialog-title"
+           >
+          <DialogTitle id="form-dialog-title">Update</DialogTitle>
+          <DialogContent>
+                       <form className="container">
            {inputfield}
-            <Button variant="outlined" size="large" color="secondary"  onClick={()=>this.submitFormAction()}>Update</Button>
-           </div>
+
+           </form>
+
+
+          </DialogContent>
+          <DialogActions>
+            <Button  size="large" color="primary"  onClick={()=>this.submitFormAction()}>Update</Button>
+            <Button onClick={closeModal} color="primary">
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
         )
   }
 }
