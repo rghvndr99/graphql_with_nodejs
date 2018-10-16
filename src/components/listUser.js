@@ -2,18 +2,24 @@ import React, { Component } from "react";
 import {Card,CardActions,CardContent,Button,Toolbar,Typography,CardActionArea,CardMedia,Avatar} from '@material-ui/core';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import './app.css';
+import img1 from './img/user1.png';
+import img2 from './img/user2.png';
+import img3 from './img/user3.png';
+import img4 from './img/user4.png';
 class ListUser extends Component {
     constructor(props){
         super(props);
       }
    render() {
+    const imgAry=[img1,img2,img3,img4];
+    const imgName=imgAry[Math.floor(Math.random() * imgAry.length-1) + 1];
     const {item,updateUserHandler,deleteUserHandler}=this.props;
       return(
          <Card className="card">
              <CardActionArea>
                <CardMedia>
-                   <Avatar className="avatar" sizes="big">
-                      <AssignmentIcon />
+                   <Avatar className="avatar" alt={item.name} sizes="big" src={imgName}>
+
                   </Avatar>
                </CardMedia>
                <CardContent>
