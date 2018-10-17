@@ -11,16 +11,15 @@ const query=`{
       }
     }`;
 
-   let response=[];
-   await fetch(ENDPOINT,{
+   let response=await fetch(ENDPOINT,{
       method:'post',
       headers:{'Content-Type': 'application/json'},
       body:JSON.stringify({"query":query})
    }).then((res)=>res.json())
       .then((res)=>{
-           response=res.data.alluser
+          return res.data.alluser
       });
-  return response;
+  return await response;
 };
 export const updateUser=async(obj)=> {
     const query=`{
@@ -32,15 +31,13 @@ export const updateUser=async(obj)=> {
         company
     	}
     }`;
-   //const response=await client.request(query);
-   let response=[];
-    await fetch(ENDPOINT,{
+    let response=await fetch(ENDPOINT,{
       method:'post',
       headers:{'Content-Type': 'application/json'},
       body:JSON.stringify({"query":query})
    }).then((res)=>res.json())
-      .then((res)=>{return response=res.data.updateuser});
-    return response;
+      .then((res)=>{return res.data.updateuser});
+    return await response;
 }
 
 export const deleteUser=async(obj)=> {
@@ -53,14 +50,14 @@ export const deleteUser=async(obj)=> {
         company
       }
     }`;
-   let response=[];
-   await fetch(ENDPOINT,{
+
+   let response=await fetch(ENDPOINT,{
       method:'post',
       headers:{'Content-Type': 'application/json'},
       body:JSON.stringify({"query":query})
    }).then((res)=>res.json())
-      .then((res)=>{console.log(res.data);return response=res.data.deleteuser});
-    return response;
+      .then((res)=>{return res.data.deleteuser});
+    return await response;
 }
 
 export const addUser=async(obj)=> {
@@ -73,14 +70,14 @@ export const addUser=async(obj)=> {
         company
       }
     }`;
-   let response=[];
-   await fetch(ENDPOINT,{
+
+   let response=await fetch(ENDPOINT,{
       method:'post',
       headers:{'Content-Type': 'application/json'},
       body:JSON.stringify({"query":query})
    }).then((res)=>res.json())
-      .then((res)=>{return response=res.data.adduser});
-    return response;
+      .then((res)=>{return res.data.adduser});
+    return await response;
 }
 
 //export default getActivity;

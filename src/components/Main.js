@@ -30,35 +30,38 @@ class Main extends Component {
 
       }
   // loading user list
-async componentDidMount(){
-   let userList=await getUser();
-    this.setState({
+ componentDidMount(){
+      getUser().then((userList)=>{
+             this.setState({
               userList
+         });
       });
   };
   // updating user
-  async submitHandler(obj){
-      let userList=await updateUser(obj);
+ submitHandler(obj){
+      updateUser(obj).then((userList)=>{
       this.setState({
         userList,
         userObj:{},
         isadduser:false
-      })
+      });
+      });
   };
   //deleting user
-  async deleteUserHandler(obj){
-    let userList=await deleteUser(obj);
-    this.setState({
-     userList
-   });
+ deleteUserHandler(obj){
+    deleteUser(obj).then((userList)=>{
+      this.setState({
+        userList
+      });
+      });
   }
-  //adding new user
-  async addUserHandler(obj){
-    let userList=await addUser(obj);
+addUserHandler(obj){
+addUser(obj).then((userList)=>{
     this.setState({
      userList,
      userObj:{},
      isadduser:false
+    });
    });
   }
   //add button click
@@ -67,7 +70,6 @@ async componentDidMount(){
        isadduser:true,
        userObj:this.adduserProps
      });
-    console.log('RDX' +this.state.isadduser);
   }
 
   undateUser(userObj){
