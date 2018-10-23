@@ -1,17 +1,16 @@
 # graphql_with_nodejs
-The context of this page is to demonstrate the integration of graphql with nodejs with few code snippets. It will include some basic concepts/keyword and its description. 
+The context of this page is to demonstrate the integration of graphql and nodejs. It will include some basic concepts/keyword and its description whenever is required. 
 
  1. Dependency:
 
     To start with graphql, following dependency needs to be installed.  
 
-![dependency](https://github.com/rghvndr99/graphql_with_nodejs/blob/master/code-snippet/dependency.PNG)
+![dependency](https://github.com/rghvndr99/repo-code-snippet/blob/master/graphql_firebase_materialUI_reactjs/dependency.PNG)
 
- 
 
  1. Add graphql with nodejs:
 
-    ![configuration](https://github.com/rghvndr99/graphql_with_nodejs/blob/master/code-snippet/configuration.PNG)
+    ![configuration](https://github.com/rghvndr99/repo-code-snippet/blob/master/graphql_firebase_materialUI_reactjs/configuration.PNG)
 
    First, the endpoint is decided that is http://localhost:portNo/graphql.  While network request, we use the same endpoint in the front end.
 
@@ -21,11 +20,11 @@ The context of this page is to demonstrate the integration of graphql with nodej
 
      It is a JSON object contains the mapping of API names and corresponding action/function that should be get executed.
 
-   ![resolver](https://github.com/rghvndr99/graphql_with_nodejs/blob/master/code-snippet/resolver.PNG)
+   ![resolver](https://github.com/rghvndr99/repo-code-snippet/blob/master/graphql_firebase_materialUI_reactjs/resolver.PNG)
 
    * schema  
      It is a structure that defines input and expected output format. 
-   ![schema img](https://github.com/rghvndr99/graphql_with_nodejs/blob/master/code-snippet/schema.PNG)
+   ![schema img](https://github.com/rghvndr99/repo-code-snippet/blob/master/graphql_firebase_materialUI_reactjs/schema.PNG)
 
  
 
@@ -39,7 +38,7 @@ Note: Please check (Mutations and Input Types | GraphQL.js Tutorial ) for more i
 
     it is used to access graphql through its user interface. If http://localhost:portNo/graphql has been hit, it will open a UI as shown below. Here real time query can be tested.
 
-![graphqlUI](https://github.com/rghvndr99/graphql_with_nodejs/blob/master/code-snippet/graphql-UI.PNG)
+![graphqlUI](https://github.com/rghvndr99/repo-code-snippet/blob/master/graphql_firebase_materialUI_reactjs/graphql-UI.PNG)
 
 1.  How it works
 
@@ -47,14 +46,14 @@ Note: Please check (Mutations and Input Types | GraphQL.js Tutorial ) for more i
 
    * Front-end side:  
      step1: URL for network request. (http://localhostportNo/graphql)  
-   ![url](https://github.com/rghvndr99/graphql_with_nodejs/blob/master/code-snippet/URL.PNG)   
+   ![url](https://github.com/rghvndr99/repo-code-snippet/blob/master/graphql_firebase_materialUI_reactjs/URL.PNG)   
     Step2: make the network request.  
-![update user](https://github.com/rghvndr99/graphql_with_nodejs/blob/master/code-snippet/updateuser.PNG)  
+![update user](https://github.com/rghvndr99/repo-code-snippet/blob/master/graphql_firebase_materialUI_reactjs/updateuser-UI.PNG)  
 
      *  Server side:  
       Step1: http://localhostportNo/graphql will receive a post request with the query as updateuser  
       Step2: resolver will execute the corresponding function that is getUpdatedUser(obj).  
 
-      ![ updateuserdatabase](https://github.com/rghvndr99/graphql_with_nodejs/blob/master/code-snippet/getUpdateUserWithoutDataBase.PNG)  
-  Step3: getUpdatedUser(obj) will return updated data which will be captured and rendered on the front end.
+      ![update user](https://github.com/rghvndr99/repo-code-snippet/blob/master/graphql_firebase_materialUI_reactjs/getUpdateUserWithoutDataBase.PNG)  
+  Step3: **getUpdatedUser(obj)** will return updated data which will be captured and rendered on the front end.
 
