@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 
 const htmlplugin=new HtmlWebPackPlugin({
@@ -8,7 +8,7 @@ const htmlplugin=new HtmlWebPackPlugin({
       filename: "index.html"
 });
 
-const cleanHtml=new CleanWebpackPlugin(["dist"]);
+const cleanHtml=new CleanWebpackPlugin();
 
 module.exports={
     entry: "./src/index.js",
