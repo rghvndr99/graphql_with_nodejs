@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/rghvndr99/graphql_with_nodejs#readme",
   "dependencies": {
-    "@babel/core": "^7.7.4",
+    "@babel/core": "^7.20.7",
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
     "@material-ui/core": "^4.7.1",
@@ -34,7 +34,7 @@
     "express-graphql": "^0.9.0",
     "file-loader": "^5.0.2",
     "graphql": "^14.5.8",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "i": "^0.3.6",
     "image-webpack-loader": "^6.0.0",
     "react": "^16.12.0",
